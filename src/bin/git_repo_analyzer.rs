@@ -22,9 +22,10 @@ fn main() {
             let authors = git::get_authors();
             let stats = analytics::count_authors(authors);
 
-            for (name, count) in stats {
-                println!("{}: {}", name, count);
+            for (index, stats) in stats.iter().enumerate() {
+                println!("{}. {}: {} commits", index + 1, stats.name, stats.commit_count);
             }
         }
     }
 }
+
