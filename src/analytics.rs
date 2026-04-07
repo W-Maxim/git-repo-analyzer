@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn count_authours(authors: Vec<String>) -> HashMap<String, usize> {
+pub fn count_authors(authors: Vec<String>) -> HashMap<String, usize> {
     let mut authorMap = HashMap::new();
 
     for author in authors {
