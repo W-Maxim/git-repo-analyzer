@@ -1,6 +1,6 @@
 use clap::{Parser, Subcommand};
 use git_repo_analyzer::git;
-use git_repo_anazyler::analytics;
+use git_repo_analyzer::analytics;
 
 #[derive(Parser)]
 #[command(name = "git-repo-analyzer")]

@@ -1,3 +1,3 @@
-mod models;
-mod git;
-mod analytics;
+pub mod models;
+pub mod git;
+pub mod analytics;
