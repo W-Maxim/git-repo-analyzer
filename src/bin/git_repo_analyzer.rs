@@ -21,7 +21,10 @@ fn main() {
         Commands::Authors => {
             let authors = git::get_authors();
             let stats = analytics::count_authors(authors);
-            println!("Authors command wird ausgeführt");
+
+            for (name, count) in stats {
+                println!("{}: {}", name, count);
+            }
         }
     }
 }
