@@ -12,6 +12,7 @@ struct Cli {
 #[derive(Subcommand)]
 enum Commands {
     Authors,
+    Hotspots,
 }
 
 fn main() {
@@ -24,6 +25,14 @@ fn main() {
 
             for (index, stats) in stats.iter().enumerate() {
                 println!("{}. {}: {} commits", index + 1, stats.name, stats.commit_count);
+            }
+        }
+        Commands::Hotspots => {
+            let files = git::get_changed_files();
+            let stats = analytics::count_files(files);
+
+            for (index, stat) in stats.iter().enumerate() {
+                println!("{}. {} - {} changes", index + 1, stat.path, stat.change_count);
             }
         }
     }

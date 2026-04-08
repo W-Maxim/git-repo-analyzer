@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use crate::models::AuthorStats;
+use crate::models::{AuthorStats, FileStats};
 use std::cmp::Reverse;
 
 pub fn count_authors(authors: Vec<String>) -> Vec<AuthorStats> {
@@ -23,6 +23,31 @@ pub fn count_authors(authors: Vec<String>) -> Vec<AuthorStats> {
     }
 
     stats.sort_by_key(|a| Reverse(a.commit_count));
+
+    stats
+}
+
+pub fn count_files(files: Vec<String>) -> Vec<FileStats> {
+    let mut file_map = HashMap::new();
+
+    for file in files {
+        if let Some(count) = file_map.get_mut(&file) {
+            *count += 1;
+        } else {
+            file_map.insert(file, 1);
+        }
+    }
+
+    let mut stats = Vec::new();
+
+    for (path, count) in file_map {
+        stats.push(FileStats {
+            path,
+            change_count: count,
+        });
+    }
+
+    stats.sort_by_key(|a| Reverse(a.change_count));
 
     stats
 }
