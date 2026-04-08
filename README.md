@@ -15,7 +15,6 @@ You need to run the tool inside a Git repository
 Git must be installed
 You need to run the tool inside a Git repository
 
----
 ## Commands
 ### authors
 
